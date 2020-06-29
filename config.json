@@ -1,0 +1,14 @@
+{
+  "slavelabour": {
+    "keywords": [
+      "task","offer"
+    ],
+    "blacklisted_keywords": [
+      "logo"
+    ],
+    "redditors": [
+      "Green-Zucchini"
+    ]
+  }
+  
+}
