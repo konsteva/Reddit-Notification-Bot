@@ -1,9 +1,50 @@
 {
   "news": {
     "keywords": [
-          ],
+     ],
     "blacklisted_keywords": [
-          ],
+     ],
+    "redditors": [
+      "konsteva"
+    ]
+  },
+  "paidtabs": {
+    "keywords": [
+    ],
+    "blacklisted_keywords": [
+    ],
+    "redditors": [
+      "konsteva"
+    ]
+  },
+  "slavelabour": {
+    "keywords": [
+      "task"
+    ],
+    "blacklisted_keywords": [
+      "offer", "logo", "wordpress", "webapp", "shopify"
+    ],
+    "redditors": [
+      "Green-Zucchini"
+    ]
+  },
+    "transcribe": {
+    "keywords": [
+    ],
+    "blacklisted_keywords": [
+      "violin", "harp"
+    ],
+    "redditors": [
+      "konsteva"
+    ]
+  },
+  "tabs": {
+    "keywords": [
+      "pay", "paypal", "bounty", "fee", "money", "price", "usd",
+      "aud", "cad", "offer", "paypall"
+    ],
+    "blacklisted_keywords": [
+    ],
     "redditors": [
       "konsteva"
     ]
