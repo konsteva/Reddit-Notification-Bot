@@ -10,10 +10,10 @@
   },
   "slavelabour": {
     "keywords": [
-      "task"
+      "[task]"
     ],
     "blacklisted_keywords": [
-      "offer", "logo", "wordpress", "webapp", "shopify"
+      "[offer]", "logo", "wordpress", "webapp", "shopify"
     ],
     "redditors": [
       "Green-Zucchini"
