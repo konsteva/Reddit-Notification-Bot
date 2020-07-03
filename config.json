@@ -32,7 +32,7 @@
   "tabs": {
     "keywords": [
       "pay", "paypal", "bounty", "fee", "money", "price", "usd",
-      "aud", "cad", "offer", "paypall", "pyapal", "bitcoin", "btc"
+      "aud", "cad", "offer", "paypall", "pyapal", "bitcoin", "btc",
       "crypto"
     ],
     "blacklisted_keywords": [
