@@ -32,9 +32,21 @@
   "tabs": {
     "keywords": [
       "pay", "paypal", "bounty", "fee", "money", "price", "usd",
-      "aud", "cad", "offer", "paypall"
+      "aud", "cad", "offer", "paypall", "pyapal", "bitcoin", "btc"
+      "crypto"
     ],
     "blacklisted_keywords": [
+    ],
+    "redditors": [
+      "konsteva"
+    ]
+  },
+  "domyhomeworkforme": {
+    "keywords": [
+      "linear", "sociology", "matlab", "Latex", "anthropology"
+    ],
+    "blacklisted_keywords": [
+      "hire", "offered", "tutor", "degree"
     ],
     "redditors": [
       "konsteva"
