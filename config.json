@@ -1,5 +1,5 @@
 {
-  "news": {
+  "PaidTabs": {
     "keywords": [
     ],
     "blacklisted_keywords": [
@@ -19,7 +19,7 @@
       "Green-Zucchini"
     ]
   },
-    "transcribe": {
+   "transcribe": {
     "keywords": [
     ],
     "blacklisted_keywords": [
@@ -29,7 +29,7 @@
       "konsteva"
     ]
   },
-  "tabs": {
+  "Tabs": {
     "keywords": [
       "pay", "paypal", "bounty", "fee", "money", "price", "usd",
       "aud", "cad", "offer", "paypall", "pyapal", "bitcoin", "btc",
