@@ -8,6 +8,15 @@
       "konsteva"
     ]
   },
+  "Coronavirus": {
+    "keywords": [
+    ],
+    "blacklisted_keywords": [
+    ],
+    "redditors": [
+      "konsteva"
+    ]
+  },
   "slavelabour": {
     "keywords": [
       "[task]"
