@@ -10,10 +10,8 @@
   },
   "slavelabour": {
     "keywords": [
-      "[task]"
     ],
     "blacklisted_keywords": [
-      "[offer]", "logo", "wordpress", "webapp", "shopify"
     ],
     "redditors": [
       "konsteva"
