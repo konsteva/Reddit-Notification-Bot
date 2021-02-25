@@ -1,6 +1,7 @@
 import json
 import os
 import praw
+from datetime import date
 
 # Try to import our config class, otherwise just stub it so it doesn't accidentally break
 try:
@@ -105,4 +106,9 @@ class Bot:
         return data
 
 if __name__ == '__main__':
-    Bot().find_submissions()
+    today = date.today()
+
+    day = today.day
+
+    if (day>=25):
+        Bot().find_submissions()
