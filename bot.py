@@ -2,6 +2,7 @@ import json
 import os
 import praw
 from datetime import date
+import time
 
 # Try to import our config class, otherwise just stub it so it doesn't accidentally break
 try:
@@ -9,8 +10,8 @@ try:
 except ImportError:
     from stub_env import Config
 
-class Bot:
 
+class Bot:
     __CONFIG_PATH = 'config.json'
 
     def __init__(self):
@@ -34,7 +35,7 @@ class Bot:
     def find_submissions(self):
         # Use a multireddit to stream from multiple subreddits instead of instantiating a new stream for each subreddit,
         # the other way would iterate over EVERY submission in EVERY subreddit in the master subreddit list for all new submissions
-        multireddit = '+'.join( self.config.keys() )
+        multireddit = '+'.join(self.config.keys())
 
         # Stream the multireddit, set skip_existing to True to skip any posts that are already in the sub
         for submission in self.reddit.subreddit(multireddit).stream.submissions(skip_existing=True):
@@ -55,10 +56,11 @@ class Bot:
 
             # Intentionally check blacklist first, we will always search for all blacklisted keywords,
             # but won't need to search for all keywords (potentially)
-            if not self.has_keyword(target_text, blacklisted_keywords) and (notify_on_all_posts or self.has_keyword(target_text, keywords)):
+            if not self.has_keyword(target_text, blacklisted_keywords) and (
+                    notify_on_all_posts or self.has_keyword(target_text, keywords)):
                 # Message the redditors from the config if this check passes
                 redditors = subreddit_data['redditors']
-                    
+
                 for redditor in redditors:
                     if not submission.author.name == redditor:
                         self.send_message(submission, redditor)
@@ -78,8 +80,8 @@ class Bot:
         title = "{}: {}".format(submission.subreddit.display_name, submission.title)
 
         # Check if it's too big, and trunc it if so
-        if len(title) > 100: 
-            title = title [:97] + '...'
+        if len(title) > 100:
+            title = title[:97] + '...'
 
         # Build the message body, since Redditor.message() takes two arguments
         # The double newlines ( \n\n ) make the link appear with a space at the end of the post
@@ -91,11 +93,11 @@ class Bot:
             self.reddit.redditor(username).message(title, message_body)
             # Some screen printing to make sure everything works
             print('Sent new message')
-            print('New post in {}, Title: {}, Description: {}'.format(submission.subreddit.display_name, submission.title, submission.selftext))
+            print('New post in {}, Title: {}, Description: {}, Day of the Month: {}'.format(
+                submission.subreddit.display_name, submission.title, submission.selftext, day))
         except Exception as e:
             print(e)
             time.sleep(60)
-
 
     def load_notification_configuration(self, path):
         # Reads a JSON file to pull out notification configuration.
@@ -105,10 +107,11 @@ class Bot:
 
         return data
 
+
 if __name__ == '__main__':
     today = date.today()
-
     day = today.day
-
-    if (day>=25):
+    
+    # Bot runs only before the 25th of the month (before dyno runs out)
+    if day >= 25:
         Bot().find_submissions()
