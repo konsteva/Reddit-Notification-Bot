@@ -1,20 +1,40 @@
 {
+  "COVID": {
+    "keywords": [
+    ],
+    "blacklisted_keywords": [
+    ],
+    "redditors": [
+      "Green-Zucchini"
+    ]
+  },
+  "news": {
+    "keywords": [
+    ],
+    "blacklisted_keywords": [
+    ],
+    "redditors": [
+      "Green-Zucchini"
+    ]
+  },
   "PaidTabs": {
     "keywords": [
     ],
     "blacklisted_keywords": [
     ],
     "redditors": [
-      "konsteva"
+      "Green-Zucchini"
     ]
   },
   "slavelabour": {
     "keywords": [
+      "[task]"
     ],
     "blacklisted_keywords": [
+      "[offer]", "logo", "wordpress", "webapp", "shopify"
     ],
     "redditors": [
-      "konsteva"
+      "Green-Zucchini"
     ]
   },
    "transcribe": {
@@ -24,7 +44,7 @@
       "violin", "harp"
     ],
     "redditors": [
-      "konsteva"
+      "Green-Zucchini"
     ]
   },
   "Tabs": {
@@ -36,7 +56,7 @@
     "blacklisted_keywords": [
     ],
     "redditors": [
-      "konsteva"
+      "Green-Zucchini"
     ]
   },
   "domyhomeworkforme": {
@@ -47,7 +67,7 @@
       "hire", "offered", "tutor", "degree"
     ],
     "redditors": [
-      "konsteva"
+      "Green-Zucchini"
     ]
   }
 }
