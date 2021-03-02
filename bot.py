@@ -113,5 +113,5 @@ if __name__ == '__main__':
     day = today.day
     
     # Bot runs only before the 25th of the month (before dyno runs out)
-    if day >= 25:
+    if day < 25:
         Bot().find_submissions()
