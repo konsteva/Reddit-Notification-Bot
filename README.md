@@ -1,6 +1,6 @@
 # Reddit Notification Bot
 
-A reddit bot that messages the user when a new post containing a keyword appears in one of the specified subreddits. It supports messaging multiple redditors, multiple keywords, blacklisted keywords over multiple subreddits. The specifications of the bot (desired subreddits, keywords, blacklisted keywords) are contained in the .json file. Examples of the possible .json file content formats:
+A reddit bot that messages the user when a new post containing a keyword appears in one of the specified subreddits. It supports messaging multiple redditors, multiple keywords, blacklisted keywords over multiple subreddits. The configuration details (REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET etc.) are to be specified in the env.py file. The specifications of the bot (desired subreddits, keywords, blacklisted keywords) are to be specified the .json file. Examples of possible .json file content formats:
 
 # Example 1
 ```
