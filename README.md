@@ -7,7 +7,7 @@ A reddit bot that messages the user when a new post containing a keyword appears
 {
   "science": {
     "keywords": [
-      "Covid"
+      "Covid",
       "Cancer"
     ],
     "blacklisted_keywords": [
@@ -29,7 +29,8 @@ When either of the keywords "Covid" or "Cancer" appear in a post's title or body
       "Gonverment"
     ],
     "blacklisted_keywords": [
-      "Greece"
+      "USA",
+      "China"
     ],
     "redditors": [
       "redditor_1",
