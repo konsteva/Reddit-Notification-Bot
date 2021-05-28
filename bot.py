@@ -1,28 +1,25 @@
 import json
 import os
 import praw
-from datetime import date
 import time
 
-# Try to import our config class, otherwise just stub it so it doesn't accidentally break
+# Try to import config class
 try:
     from env import Config
 except ImportError:
-    from stub_env import Config
+    print('Import Error')
 
 
 class Bot:
-    __CONFIG_PATH = 'config.json'
+    CONFIG_PATH = 'config.json'
 
     def __init__(self):
         self.reddit = self.load_reddit()
-        self.config = self.load_notification_configuration(self.__CONFIG_PATH)
+        self.config = self.load_notification_configuration(self.CONFIG_PATH)
 
     def load_reddit(self):
-        # Check where the script is running. If it's on a local machine, set the vars needed.
-        # Otherwise, continue on, assuming these vars are set on Heroku.
-        if 'SCRIPT_ENV' not in os.environ or os.environ['SCRIPT_ENV'] in ['test', 'development']:
-            Config.set_env_vars()
+        #  needed variables
+        Config.set_env_vars()
 
         reddit = praw.Reddit(client_id=os.environ['REDDIT_CLIENT_ID'],
                              client_secret=os.environ['REDDIT_CLIENT_SECRET'],
@@ -33,39 +30,34 @@ class Bot:
         return reddit
 
     def find_submissions(self):
-        # Use a multireddit to stream from multiple subreddits instead of instantiating a new stream for each subreddit,
-        # the other way would iterate over EVERY submission in EVERY subreddit in the master subreddit list for all new submissions
+        # Use a multireddit to stream from multiple subreddits
         multireddit = '+'.join(self.config.keys())
 
         # Stream the multireddit, set skip_existing to True to skip any posts that are already in the sub
         for submission in self.reddit.subreddit(multireddit).stream.submissions(skip_existing=True):
-            # Since we use a multireddit, we need to know which subreddit configuration to load...
-            # This finds the subreddit, and loads the correct config.
+            # Finds the subreddit, and loads the correct config.
             subreddit = submission.subreddit.display_name
             subreddit_data = self.config[subreddit]
 
-            # Pull a list of keywords out of the config file
+            # Pull keywords out of the config file
             blacklisted_keywords = subreddit_data['blacklisted_keywords']
             keywords = subreddit_data['keywords']
 
             # Let the bot notify on all posts if keywords are empty
             notify_on_all_posts = len(keywords) < 1
 
-            # Join submission and title into a target_text variable to make searching easier
+            # Join submission and title
             target_text = ' '.join([submission.title, submission.selftext]).lower()
 
-            # Intentionally check blacklist first, we will always search for all blacklisted keywords,
-            # but won't need to search for all keywords (potentially)
-            if not self.has_keyword(target_text, blacklisted_keywords) and (
-                    notify_on_all_posts or self.has_keyword(target_text, keywords)):
+            # Check blacklist first, we will always search for all blacklisted keywords
+            if not self.has_keyword(target_text, blacklisted_keywords) and (notify_on_all_posts or self.has_keyword(target_text, keywords)):
                 # Message the redditors from the config if this check passes
                 redditors = subreddit_data['redditors']
 
                 for redditor in redditors:
+                    # Check if the post author is the same as the targeted redditor
                     if not submission.author.name == redditor:
                         self.send_message(submission, redditor)
-                    else:
-                        print('Skipping message, submission author {} is the same as the target user.'.format(redditor))
 
     def has_keyword(self, target_text, keywords):
         # Check if a keyword is in the target
@@ -79,13 +71,11 @@ class Bot:
         # Build up a good title
         title = "{}: {}".format(submission.subreddit.display_name, submission.title)
 
-        # Check if it's too big, and trunc it if so
+        # Check if it's too big, and trim it if so
         if len(title) > 100:
             title = title[:97] + '...'
 
-        # Build the message body, since Redditor.message() takes two arguments
-        # The double newlines ( \n\n ) make the link appear with a space at the end of the post
-        # Also account for empty selftext if it's a link post...
+        # Build the message body
         newlines = "\n\n" if submission.is_self else ''
         message_body = submission.selftext + newlines + 'Link: ' + submission.shortlink
 
@@ -93,8 +83,8 @@ class Bot:
             self.reddit.redditor(username).message(title, message_body)
             # Some screen printing to make sure everything works
             print('Sent new message')
-            print('New post in {}, Title: {}, Description: {}, Day of the Month: {}'.format(
-                submission.subreddit.display_name, submission.title, submission.selftext, day))
+            print('New post in {}, Title: {}, Description: {}'.format(
+                submission.subreddit.display_name, submission.title, submission.selftext))
         except Exception as e:
             print(e)
             time.sleep(60)
@@ -109,9 +99,4 @@ class Bot:
 
 
 if __name__ == '__main__':
-    today = date.today()
-    day = today.day
-    
-    # Bot runs only before the 25th of the month (before dyno runs out)
-    if day < 25:
-        Bot().find_submissions()
+    Bot().find_submissions()
