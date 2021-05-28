@@ -1,73 +1,10 @@
 {
-  "COVID": {
+  "Subreddit_Name": {
     "keywords": [
     ],
     "blacklisted_keywords": [
     ],
     "redditors": [
-      "Green-Zucchini"
-    ]
-  },
-  "news": {
-    "keywords": [
-    ],
-    "blacklisted_keywords": [
-    ],
-    "redditors": [
-      "Green-Zucchini"
-    ]
-  },
-  "PaidTabs": {
-    "keywords": [
-    ],
-    "blacklisted_keywords": [
-    ],
-    "redditors": [
-      "Green-Zucchini"
-    ]
-  },
-  "slavelabour": {
-    "keywords": [
-      "[task]"
-    ],
-    "blacklisted_keywords": [
-      "[offer]", "logo", "wordpress", "webapp", "shopify"
-    ],
-    "redditors": [
-      "Green-Zucchini"
-    ]
-  },
-   "transcribe": {
-    "keywords": [
-    ],
-    "blacklisted_keywords": [
-      "violin", "harp"
-    ],
-    "redditors": [
-      "Green-Zucchini"
-    ]
-  },
-  "Tabs": {
-    "keywords": [
-      "pay", "paypal", "bounty", "fee", "money", "price", "usd",
-      "aud", "cad", "offer", "paypall", "pyapal", "bitcoin", "btc",
-      "crypto"
-    ],
-    "blacklisted_keywords": [
-    ],
-    "redditors": [
-      "Green-Zucchini"
-    ]
-  },
-  "domyhomeworkforme": {
-    "keywords": [
-      "linear", "sociology", "matlab", "Latex", "anthropology"
-    ],
-    "blacklisted_keywords": [
-      "hire", "offered", "tutor", "degree"
-    ],
-    "redditors": [
-      "Green-Zucchini"
     ]
   }
 }
