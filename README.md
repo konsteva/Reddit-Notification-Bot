@@ -39,7 +39,7 @@ When either of the keywords "Covid" or "Cancer" appear in a post's title or body
   }
 }
 ```
-When the keyword "Gonverment" appear in a post's title or body in the subreddit r/politics and the word "Greece" doesn't, the bot messages users "redditor_1" and "redditor_3"
+When the keyword "Gonverment" appear in a post's title or body in the subreddit r/politics and the words "USA" and "China" don't, the bot messages users "redditor_1" and "redditor_3"
 
 # Example 3
 ```
